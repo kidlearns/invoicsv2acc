@@ -28,6 +28,7 @@ Public Class Form1
                 If fields IsNot Nothing AndAlso fields.Length > 0 Then
 
                     For Each field In fields
+
                         rec.Add(field)
                         'MsgBox(field & " ")
 
@@ -79,7 +80,7 @@ Public Class Form1
 
             For i = 0 To data.WCount
 
-                Dim accessCmd As New OleDbCommand("INSERT INTO YourTableName(Field1, Field2, Field3) VALUES (@Field1, @Field2, @Field3)", accessConn)
+                Dim accessCmd As New OleDbCommand("INSERT INTO invoice(Field1, Field2, Field3) VALUES (@Field1, @Field2, @Field3)", accessConn)
 
                 accessCmd.Parameters.AddWithValue("@Field1", data.LString(i))
                 accessCmd.Parameters.AddWithValue("@Field2", data.LString(i))
