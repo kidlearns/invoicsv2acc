@@ -2,6 +2,7 @@
 Imports System.Data.OleDb
 
 Public Class Form1
+
     Dim csvFilePath As String = "C:\Users\Pacleb\Desktop\temporary\invoice1.csv"
     Dim cnt As Integer = 0
     Dim vHead As New ClassQto
@@ -59,9 +60,11 @@ Public Class Form1
 
                 Next
 
+                InsertDb(HF)
+
             End If
 
-            InsertDb(HF)
+
 
         End Using
 

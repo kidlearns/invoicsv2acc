@@ -1,0 +1,10 @@
+C:\Users\Pacleb\Documents\Visual Studio 2008\Projects\invoicsv2acc\invoicsv2acc\bin\Debug\invoicsv2acc.exe
+C:\Users\Pacleb\Documents\Visual Studio 2008\Projects\invoicsv2acc\invoicsv2acc\bin\Debug\invoicsv2acc.pdb
+C:\Users\Pacleb\Documents\Visual Studio 2008\Projects\invoicsv2acc\invoicsv2acc\bin\Debug\invoicsv2acc.xml
+C:\Users\Pacleb\Documents\Visual Studio 2008\Projects\invoicsv2acc\invoicsv2acc\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Pacleb\Documents\Visual Studio 2008\Projects\invoicsv2acc\invoicsv2acc\obj\Debug\invoicsv2acc.Form1.resources
+C:\Users\Pacleb\Documents\Visual Studio 2008\Projects\invoicsv2acc\invoicsv2acc\obj\Debug\invoicsv2acc.Resources.resources
+C:\Users\Pacleb\Documents\Visual Studio 2008\Projects\invoicsv2acc\invoicsv2acc\obj\Debug\invoicsv2acc.vbproj.GenerateResource.Cache
+C:\Users\Pacleb\Documents\Visual Studio 2008\Projects\invoicsv2acc\invoicsv2acc\obj\Debug\invoicsv2acc.exe
+C:\Users\Pacleb\Documents\Visual Studio 2008\Projects\invoicsv2acc\invoicsv2acc\obj\Debug\invoicsv2acc.xml
+C:\Users\Pacleb\Documents\Visual Studio 2008\Projects\invoicsv2acc\invoicsv2acc\obj\Debug\invoicsv2acc.pdb
