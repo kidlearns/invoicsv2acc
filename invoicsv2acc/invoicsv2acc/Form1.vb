@@ -1,10 +1,14 @@
 ﻿Imports Microsoft.VisualBasic.FileIO
+Imports System.Data.OleDb
+
 Public Class Form1
     Dim csvFilePath As String = "C:\Users\Pacleb\Desktop\temporary\invoice1.csv"
     Dim cnt As Integer = 0
     Dim vHead As New ClassQto
 
-    Public Sub readByRow()
+    Public Function readByRow()
+
+        Dim rec As ArrayList
 
         Using parser As New TextFieldParser(csvFilePath)
             parser.TextFieldType = FieldType.Delimited
@@ -23,8 +27,8 @@ Public Class Form1
                 If fields IsNot Nothing AndAlso fields.Length > 0 Then
 
                     For Each field In fields
-
-                        MsgBox(field & " ")
+                        rec.Add(field)
+                        'MsgBox(field & " ")
 
                     Next
 
@@ -32,7 +36,8 @@ Public Class Form1
             End While
         End Using
 
-    End Sub
+        Return rec
+    End Function
 
     Public Sub readByCol()
 
@@ -41,35 +46,58 @@ Public Class Form1
             parser.SetDelimiters(",")
             Dim counter As Integer = 0
             Dim headerFields As String() = parser.ReadFields()
-
+            Dim HF As New ClassQto
             If headerFields IsNot Nothing AndAlso headerFields.Length > 0 Then
                 'read the header
+
                 For Each headerField In headerFields
 
-                    MsgBox(headerField & " ")
+                    'MsgBox(headerField & " ")
+                    HF.addCount(counter)
+                    counter = counter + 1
+                    HF.LAdd(headerField)
 
                 Next
 
-                'continue reading rest
-                ' While Not parser.EndOfData
-                'Dim fields As String() = parser.ReadFields()
-
-                'If fields IsNot Nothing AndAlso fields.Length > 0 Then
-
-                'For Each field In fields
-
-                'MsgBox(field & " ")
-
-                'Next
-
-                'End If
-                '   End While
             End If
+
+            InsertDb(HF)
+
         End Using
+
+    End Sub
+    Private Sub InsertDb(ByRef data As ClassQto)
+
+        Dim accessConnStr As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Pacleb\Desktop\temporary\invoice.accdb;Persist Security Info=False;"
+
+        Using accessConn As New OleDbConnection(accessConnStr)
+
+            accessConn.Open()
+
+            For i = 0 To data.WCount
+
+                Dim accessCmd As New OleDbCommand("INSERT INTO YourTableName(Field1, Field2, Field3) VALUES (@Field1, @Field2, @Field3)", accessConn)
+
+                accessCmd.Parameters.AddWithValue("@Field1", data.LString(i))
+                accessCmd.Parameters.AddWithValue("@Field2", data.LString(i))
+                accessCmd.Parameters.AddWithValue("@Field3", data.LString(i))
+
+                accessCmd.ExecuteNonQuery()
+
+            Next
+
+            accessConn.Close()
+
+        End Using
+
+        MessageBox.Show("Data Transfer completed.")
 
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+
+        readByCol()
+        'readByRow()
 
     End Sub
 End Class
